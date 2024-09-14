@@ -84,7 +84,7 @@ export const NodeTemplate = ({
             {name}
           </div>
         </div>
-        <div className='mx-4 my-3 rounded-lg'>
+        <div className='mx-4 my-3 rounded-lg nodrag'>
           {children}
         </div>
       </div>
