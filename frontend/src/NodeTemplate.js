@@ -30,7 +30,7 @@ export const NodeTemplate = ({
     >
       <div
         style={{
-          width: 230,
+          width: 250,
           height: 'fit-content',
           border: '1px solid black',
           borderRadius: '8px',
@@ -84,7 +84,9 @@ export const NodeTemplate = ({
             {name}
           </div>
         </div>
-        <div style={{ padding: '15px 10px 10px 10px' }}>{children}</div>
+        <div className='mx-4 my-3 rounded-lg'>
+          {children}
+        </div>
       </div>
     </div>
   );

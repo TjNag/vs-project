@@ -32,7 +32,7 @@ export const FormField = ({
     if (type === 'textarea' || type === 'text') {
       resizeTextArea();
     }
-  };
+  };  
 
   return (
     <label
@@ -40,13 +40,11 @@ export const FormField = ({
         display: 'flex',
         alignItems: 'center',
         fontSize: '1rem',
-        border: '0.5px, solid grey',
-        padding: '5px',
-        borderRadius: '5px',
+        // border: '0.5px, solid grey',
         marginBottom: '10px',
-
         ...style,
       }}
+      // className='bg-red-100'
     >
       {type === 'checkbox' ? (
         <>
@@ -88,14 +86,7 @@ export const FormField = ({
               onInput={handleInput}
               onKeyDown={onKeyDown}
               rows={rows}
-              style={{
-                resize: 'none',
-                height: '15px',
-                width: '97%',
-                outline: 'none',
-                backgroundColor: 'transparent',
-                border: 'none',
-              }}
+              className="resize-none p-1 border border-black rounded-lg outline-none bg-transparent overflow-y-auto max-h-48"
             />
           ) : (
             <input
