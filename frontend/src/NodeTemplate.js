@@ -1,9 +1,9 @@
 // NodeTemplate.js
 
-import React, { useEffect, useState } from 'react';
-import { Handle, useUpdateNodeInternals } from 'reactflow';
+import React, { useEffect, useState } from "react";
+import { Handle, useUpdateNodeInternals } from "reactflow";
 import { RxCrossCircled } from "react-icons/rx";
-import { useStore } from './store';
+import { useStore } from "./store";
 
 export const NodeTemplate = ({
   id,
@@ -22,7 +22,9 @@ export const NodeTemplate = ({
 
   // Access global store for handle selection and connection states
   const selectedHandleType = useStore((state) => state.selectedHandleType);
-  const setSelectedHandleType = useStore((state) => state.setSelectedHandleType);
+  const setSelectedHandleType = useStore(
+    (state) => state.setSelectedHandleType
+  );
   const connectingHandle = useStore((state) => state.connectingHandle);
 
   useEffect(() => {
@@ -30,28 +32,17 @@ export const NodeTemplate = ({
   }, [handles, id, updateNodeInternals]);
 
   const handleClose = () => {
-    onElementsRemove([{ id, type: 'node' }]); // Remove the node by its ID
+    onElementsRemove([{ id, type: "node" }]); // Remove the node by its ID
   };
 
   return (
-    <div
-      style={{
-        border: '1px solid black',
-        padding: '3px',
-        borderRadius: '8px',
-        background:
-          'linear-gradient(222deg, rgba(51,36,89,1) 0%, rgba(89,64,135,1) 35%, rgba(211,160,254,1) 100%)',
-      }}
-    >
+    <div className="border border-black p-1 rounded-lg bg-light-violate hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)]">
       <div
         style={{
-          width: 250,
-          height: 'fit-content',
-          border: '1px solid black',
-          borderRadius: '8px',
-          backgroundColor: 'white',
+          border: "1px solid #7A7DF3",
           ...style,
         }}
+        className="w-[250px] h-fit rounded-[8px] bg-white"
       >
         {handles.map((handle, index) => {
           // Determine the background color based on the state
@@ -60,29 +51,27 @@ export const NodeTemplate = ({
           // Highlight the starting handle and opposite-type handles in red
           if (
             connectingHandle &&
-            (
-              handle.id === connectingHandle.handleId ||
-              (
-                handle.type === (connectingHandle.handleType === 'source' ? 'target' : 'source')
-              )
-            )
+            (handle.id === connectingHandle.handleId ||
+              handle.type ===
+                (connectingHandle.handleType === "source"
+                  ? "target"
+                  : "source"))
           ) {
-            backgroundColor = 'red';
+            backgroundColor = "#0e4ecc";
           } else if (
             selectedHandleType &&
-            (
-              selectedHandleType.clickedHandleId === handle.id ||
-              handle.type === selectedHandleType.selectedType
-            )
+            (selectedHandleType.clickedHandleId === handle.id ||
+              handle.type === selectedHandleType.selectedType)
           ) {
             // Highlight selected handles
-            backgroundColor = 'red';
+            backgroundColor = "red";
           } else if (hoveredHandleId === handle.id) {
             // Highlight hovered handle
-            backgroundColor = 'yellow';
+            backgroundColor = "violet";
           } else {
             // Default colors based on handle position
-            backgroundColor = handle.position === 'left' ? 'rgba(60, 21, 115, 1)' : '#ce94e8';
+            backgroundColor =
+              handle.position === "left" ? "rgba(60, 21, 115, 1)" : "#ce94e8";
           }
 
           return (
@@ -94,7 +83,8 @@ export const NodeTemplate = ({
                 onMouseEnter={() => setHoveredHandleId(handle.id)}
                 onMouseLeave={() => setHoveredHandleId(null)}
                 onClick={() => {
-                  const oppositeType = handle.type === 'source' ? 'target' : 'source';
+                  const oppositeType =
+                    handle.type === "source" ? "target" : "source";
                   if (
                     selectedHandleType &&
                     selectedHandleType.clickedHandleId === handle.id
@@ -108,21 +98,33 @@ export const NodeTemplate = ({
                   }
                 }}
                 style={{
-                  width: '8px',
-                  height: '8px',
-                  backgroundColor: backgroundColor,
+                  width: '14px', // Outer circle size
+                  height: '14px',
+                  borderRadius: '50%', // Make it round
+                  backgroundColor: 'white', // Color of the outer circle
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: `1px solid ${backgroundColor} `, // Border of the outer circle
                   ...handle.style,
                 }}
-                name={handle.name}
-              />
+              >
+                <div style={{
+                  width: '8px', // Inner circle size
+                  height: '8px',
+                  borderRadius: '50%', // Make it round
+                  backgroundColor: backgroundColor, // Color of the inner circle
+                  pointerEvents: 'none', // Ignore all mouse events on the inner div
+                }} />
+              </Handle>
               {handle.name && (
                 <div
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     top: `${parseFloat(handle.style.top) - 15}px`,
                     left: `-${handle.name.length * 7}px`,
-                    color: 'rgba(60, 21, 115, 1)',
-                    fontSize: '12px',
+                    color: "rgba(60, 21, 115, 1)",
+                    fontSize: "12px",
                   }}
                 >
                   {handle.name}
@@ -133,25 +135,18 @@ export const NodeTemplate = ({
         })}
         <div
           style={{
-            borderBottom: '0.5px rgba(60, 21, 115, 1) solid',
-            padding: '5px',
-            fontSize: '14px',
-            fontWeight: '700',
+            borderBottom: "0.5px #6563E4 solid",
           }}
+          className=" p-1 text-[14px] font-bold py-2 pl-2"
         >
-          <div style={{ display: 'flex', gap: '5px' }}>
+          <div className="flex gap-1 items-center text-text-dark-violate">
             {icon}
             {name}
           </div>
         </div>
-        <div className='mx-4 my-3 rounded-lg nodrag'>{children}</div>
+        <div className="mx-4 my-3 rounded-lg nodrag">{children}</div>
         <div
-          style={{
-            position: 'absolute',
-            top: '5px',
-            right: '5px',
-            cursor: 'pointer',
-          }}
+          className="absolute top-2 right-2 cursor-pointer text-light-red hover:text-red-500"
           onClick={handleClose}
         >
           <RxCrossCircled size={20} />

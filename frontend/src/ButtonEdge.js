@@ -66,17 +66,8 @@ export default function CustomEdge({
       >
         <body>
           <button
-            className="edgebutton"
+            className={`edgebutton h-5 w-5  rounded-full border-none ${isPendingRemoval ? 'bg-red-500 text-white' : 'bg-red-200 text-black '} cursor-pointer`}
             onClick={(event) => onEdgeClick(event, id)} // Use the passed onEdgeClick
-            style={{
-                // width: '100%',
-                // height: '100%',
-                borderRadius: '100%',
-                border: 'none',
-                background: isPendingRemoval ? 'red' : '#fff',
-                color: isPendingRemoval ? '#fff' : '#000',
-                cursor: 'pointer',
-              }}
               title={isPendingRemoval ? "Click again to remove" : "Remove edge"}
           >
             ×

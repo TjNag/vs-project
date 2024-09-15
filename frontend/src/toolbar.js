@@ -9,14 +9,9 @@ import { FaRegNoteSticky } from 'react-icons/fa6';
 
 export const PipelineToolbar = () => {
   return (
-    <div style={{ padding: '10px' }}>
+    <div className='p-2'>
       <div
-        style={{
-          marginTop: '20px',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '10px',
-        }}
+        className='flex flex-wrap gap-3 my-1'
       >
         <DraggableNode type='customInput' label='Input' icon={<MdInput />} />
         <DraggableNode type='llm' label='LLM' icon={<LuBrainCircuit />} />

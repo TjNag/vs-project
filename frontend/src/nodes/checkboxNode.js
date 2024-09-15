@@ -67,6 +67,7 @@ export const CheckboxNode = ({ id, data }) => {
         step={1}
       />
 
+<div className="w-full overflow-x-hidden whitespace-normal break-words">
       {checkboxes.map((checkbox) => (
         <FormField
           key={checkbox.id}
@@ -74,15 +75,12 @@ export const CheckboxNode = ({ id, data }) => {
           type='checkbox'
           checked={checkbox.checked}
           onChange={handleCheckboxChange(checkbox.id)}
-          style={{ border: 'none', padding: '0px' }}
+          className='border-none p-0'
         />
       ))}
+      </div>
       <div
-        style={{
-          display: 'flex',
-          border: '0.5px solid black',
-          borderRadius: '5px',
-        }}
+        className='flex border border-black rounded-md overflow-y-auto max-h-32'
       >
         <FormField
           label='Add New Checkbox'
@@ -90,9 +88,9 @@ export const CheckboxNode = ({ id, data }) => {
           value={newCheckboxLabel}
           onChange={handleNewCheckboxLabelChange}
           onKeyDown={handleKeyDown}
-          style={{ border: 'none', marginBottom: '0' }}
+          className='border-none mb-0'
         />
-        <IoIosAddCircle onClick={addCheckBox} style={{ alignSelf: 'center' }} />
+        <IoIosAddCircle onClick={addCheckBox} className='self-center'/>
       </div>
     </NodeTemplate>
   );

@@ -37,14 +37,9 @@ export const FormField = ({
   return (
     <label
       style={{
-        display: 'flex',
-        alignItems: 'center',
-        fontSize: '1rem',
-        // border: '0.5px, solid grey',
-        marginBottom: '10px',
         ...style,
       }}
-      // className='bg-red-100'
+      className='flex items-center text-[1rem] mb-[10px]'
     >
       {type === 'checkbox' ? (
         <>
@@ -52,16 +47,16 @@ export const FormField = ({
             type={type}
             checked={checked}
             onChange={onChange}
-            style={{ marginRight: '8px' }} // Add space between checkbox and label
+            className='mr-2' // Add space between checkbox and label
           />
           <span>{label}</span>
         </>
       ) : (
         <div
-          style={{ display: 'flex', flexDirection: 'column', width: '100%' }}
+          className='flex flex-col w-full'
         >
           <span
-            style={{ fontSize: '12px', marginBottom: '5px', fontWeight: 700 }}
+            className='text-xs mb-1 font-bold text-medium-dark-violate'
           >
             {label}
           </span>
@@ -70,7 +65,7 @@ export const FormField = ({
               value={value}
               multiple={multiple}
               onChange={onChange}
-              style={{ border: 'none', outline: 'none' }}
+              className='border-none outline-none'
             >
               {options.map((option, index) => (
                 <option key={`${index}-${value}`} value={option.value}>
@@ -86,7 +81,7 @@ export const FormField = ({
               onInput={handleInput}
               onKeyDown={onKeyDown}
               rows={rows}
-              className="resize-none p-1 border border-black rounded-lg outline-none bg-transparent overflow-y-auto max-h-48"
+              className="resize-none p-1 border border-medium-dark-violate rounded-lg outline-none bg-transparent overflow-y-auto max-h-48"
             />
           ) : (
             <input
@@ -98,11 +93,7 @@ export const FormField = ({
               min={type === 'number' || type === 'range' ? min : undefined}
               max={type === 'number' || type === 'range' ? max : undefined}
               step={type === 'number' || type === 'range' ? step : undefined}
-              style={{
-                border: 'none',
-                outline: 'none',
-                backgroundColor: 'transparent',
-              }}
+              className='border-none outline-none bg-transparent'
             />
           )}
         </div>

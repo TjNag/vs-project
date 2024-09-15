@@ -32,7 +32,7 @@ export const DateNode = ({ id, data }) => {
         { type: 'source', position: Position.Right, id: `${id}-output` },
       ]}
     >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='flex flex-col text-medium-dark-violate'>
         <FormField
           label='Start date:'
           type='date'
@@ -40,7 +40,7 @@ export const DateNode = ({ id, data }) => {
           onChange={(e) => handleDateChange(e, setStartDate)}
         />
         {showStartTime ? (
-          <div style={{ position: 'relative' }}>
+          <div className='relative'>
             <FormField
               label=''
               type='time'
@@ -49,21 +49,17 @@ export const DateNode = ({ id, data }) => {
             />
             <IoIosClose
               onClick={() => setShowStartTime(!showStartTime)}
-              style={{
-                position: 'absolute',
-                top: '0',
-                right: '',
-              }}
+              className='absolute top-0 right-0 -m-1'
             />
           </div>
         ) : (
           <IoIosTime
             onClick={() => setShowStartTime(true)}
-            style={{ alignSelf: 'flex-end', marginBottom: '5px' }}
+            className='self-end mb-2 text-medium-dark-violate'
           />
         )}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='flex flex-col text-medium-dark-violate'>
         <FormField
           label='End Date:'
           type='date'
@@ -71,7 +67,7 @@ export const DateNode = ({ id, data }) => {
           onChange={(e) => handleDateChange(e, setEndDate)}
         />
         {showEndTime ? (
-          <div style={{ position: 'relative' }}>
+          <div className='relative'>
             <FormField
               label=''
               type='time'
@@ -80,17 +76,13 @@ export const DateNode = ({ id, data }) => {
             />
             <IoIosClose
               onClick={() => setShowEndTime(!showEndTime)}
-              style={{
-                position: 'absolute',
-                top: '0',
-                right: '',
-              }}
+              className='absolute top-0 right-0 -m-1'
             />
           </div>
         ) : (
           <IoIosTime
             onClick={() => setShowEndTime(true)}
-            style={{ alignSelf: 'flex-end', marginBottom: '5px' }}
+            className='self-end mb-[5px] text-medium-dark-violate'
           />
         )}
       </div>

@@ -47,3 +47,26 @@ textarea::-webkit-scrollbar-thumb {
   border: 3px solid transparent; /* creates padding around scroll thumb */
 }
 
+
+.btn-grad {
+  background-image: linear-gradient(to right, #7A7DF3 0%, #6563E4  51%, #7A7DF3  100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+}
+
+.btn-grad:hover {
+  background-position: right center; 
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* #CECFFC Border Color (Light violate) [light-violate] */
+/* #FA8072 Red color for Cross color [light-red] */
+/* #3438ED Javascript Blue Color (Deep Blue-for-javascript) [deep-blue] */
+/* #6563E4 Node Heading Color (Text-dark-violate) [text-dark-violate]*/
+/* #7A7DF3 Cross initial color (Medium dark violate) [medium-dark-violate] */
+/* Node initiaally have gray text and border. On hover shadow violate and heading the text-dark-violate color */

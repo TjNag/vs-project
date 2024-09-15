@@ -31,7 +31,7 @@ export const LLMNode = ({ id, data }) => {
       ]}
     >
       <div>
-        <span style={{ fontSize: '14px' }}>This is a LLM.</span>
+        <span className='text-sm'>This is a LLM.</span>
       </div>
     </NodeTemplate>
   );

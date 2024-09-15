@@ -39,11 +39,7 @@ export const SubmitButton = () => {
 
   return (
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
+      className='flex justify-center items-center w-full h-16 bg-violet-50'
     >
       {submitted && (
         <ModalNotification close={() => setSubmitted(false)} data={currData} />
@@ -51,22 +47,11 @@ export const SubmitButton = () => {
       <button
         type='submit'
         onClick={handleClick}
-        style={{
-          background:
-            'linear-gradient(to bottom left, rgba(29, 23, 74, 1), rgba(60, 21, 115, 1))',
-          color: 'white',
-          width: '100px',
-          padding: '10px',
-          borderRadius: '20px',
-          fontWeight: 700,
-          fontSize: '1rem',
-          boxShadow: '1px 1px 12px 0px rgba(156,103,156,1)',
-          cursor: 'pointer',
-          border: 'none',
-        }}
+        className='btn-grad cursor-pointer border-none px-8 py-3 rounded-md font-semibold '
       >
         Submit
       </button>
     </div>
   );
 };
+

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { NodeTemplate } from '../NodeTemplate';
-import { Position } from 'reactflow';
-import { FormField } from '../FormField';
-import { BiSelectMultiple } from 'react-icons/bi';
-import { IoIosClose } from 'react-icons/io';
+import React, { useState } from "react";
+import { NodeTemplate } from "../NodeTemplate";
+import { Position } from "reactflow";
+import { FormField } from "../FormField";
+import { BiSelectMultiple } from "react-icons/bi";
+import { IoIosClose } from "react-icons/io";
 
 export const MultiSelectNode = ({ id, data }) => {
   const [selectedOptions, setSelectedOptions] = useState(data?.selected || []);
 
   const options = [
-    { value: 'option1', label: 'Option 1', checked: false },
-    { value: 'option2', label: 'Option 2', checked: false },
-    { value: 'option3', label: 'Option 3', checked: false },
+    { value: "option1", label: "Option 1", checked: false },
+    { value: "option2", label: "Option 2", checked: false },
+    { value: "option3", label: "Option 3", checked: false },
   ];
 
   const handleChange = (e) => {
@@ -42,46 +42,25 @@ export const MultiSelectNode = ({ id, data }) => {
   return (
     <NodeTemplate
       id={id}
-      name='Multi-Select Dropdown'
+      name="Multi-Select Dropdown"
       icon={<BiSelectMultiple />}
       handles={[
-        { type: 'target', position: Position.Left, id: `${id}-input` },
-        { type: 'source', position: Position.Right, id: `${id}-output` },
+        { type: "target", position: Position.Left, id: `${id}-input` },
+        { type: "source", position: Position.Right, id: `${id}-output` },
       ]}
     >
-      <div
-        style={{
-          marginBottom: '20px',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '8px',
-        }}
-      >
+      <div className="mb-5 flex flex-wrap gap-2">
         {selectedOptions.map((selection) => (
           <div
             key={selection}
-            style={{
-              border: '2px rgb(242 197 255) black',
-              width: 'fit-content',
-              padding: '5px',
-              borderRadius: '40px',
-              display: 'flex',
-              alignItems: 'center',
-              backgroundColor: 'rgb(242 197 255 / 30%)',
-            }}
+            className="w-fit px-4 py-2 rounded-[40px] flex items-center justify-between bg-violet-100"
           >
-            <span style={{ fontSize: '14px', fontWeight: 700 }}>
+            <span className="text-sm font-medium text-center flex-1">
               {selection}
             </span>
             <span
               onClick={() => handleRemoveSelection(selection)}
-              style={{
-                cursor: 'pointer',
-                marginLeft: '8px',
-                color: 'rgba(60, 21, 115, 1)',
-                fontSize: '14px',
-                fontWeight: 700,
-              }}
+              className="cursor-pointer ml-2 text-sm text-red-500 font-bold"
             >
               <IoIosClose />
             </span>
@@ -89,8 +68,8 @@ export const MultiSelectNode = ({ id, data }) => {
         ))}
       </div>
       <FormField
-        label='Select Options'
-        type='select'
+        label="Select Options"
+        type="select"
         value={selectedOptions}
         onChange={handleChange}
         options={options}
