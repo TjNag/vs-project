@@ -37,7 +37,7 @@ export const useStore = create((set, get) => ({
     },
     onConnect: (connection) => {
       set({
-        edges: addEdge({...connection, type: 'smoothstep', animated: true, markerEnd: {type: MarkerType.Arrow, height: '20px', width: '20px'}}, get().edges),
+        edges: addEdge({...connection, type: 'buttonedge', animated: true, markerEnd: {type: MarkerType.Arrow, height: '20px', width: '20px'}}, get().edges),
       });
     },
     updateNodeField: (nodeId, fieldName, fieldValue) => {
@@ -49,6 +49,12 @@ export const useStore = create((set, get) => ({
   
           return node;
         }),
+      });
+    },
+    onElementsRemove: (elementsToRemove) => {
+      set({
+        nodes: get().nodes.filter((node) => !elementsToRemove.some((el) => el.id === node.id)),
+        edges: get().edges.filter((edge) => !elementsToRemove.some((el) => el.id === edge.id)),
       });
     },
   }));

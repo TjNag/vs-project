@@ -3,20 +3,22 @@
 // --------------------------------------------------
 
 import { useState, useRef, useCallback } from 'react';
-import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
+import ReactFlow, { Controls, Background, MiniMap, addEdge } from 'reactflow';
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
 import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
-
-import 'reactflow/dist/style.css';
 import { CheckboxNode } from './nodes/checkboxNode';
 import { FileUploadNode } from './nodes/fileUploadNode';
 import { MultiSelectNode } from './nodes/multiSelectNode';
 import { DateNode } from './nodes/dateNode';
 import { NotesNode } from './nodes/notesNode';
+
+import ButtonEdge from './ButtonEdge'; // Import ButtonEdge
+
+import 'reactflow/dist/style.css';
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
@@ -33,6 +35,7 @@ const nodeTypes = {
   notes: NotesNode,
 };
 
+// Selector for Zustand store
 const selector = (state) => ({
   nodes: state.nodes,
   edges: state.edges,
@@ -41,6 +44,7 @@ const selector = (state) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
+  onElementsRemove: state.onElementsRemove, // Ensure onElementsRemove is included
 });
 
 export const PipelineUI = () => {
@@ -54,7 +58,27 @@ export const PipelineUI = () => {
     onNodesChange,
     onEdgesChange,
     onConnect,
+    onElementsRemove, // Destructure onElementsRemove
   } = useStore(selector, shallow);
+
+  // Handler to remove edges
+  const handleEdgeRemove = useCallback(
+    (event, id) => {
+      event.stopPropagation(); // Prevent event bubbling
+      onElementsRemove([{ id, type: 'edge' }]); // Remove the edge with the specified id
+    },
+    [onElementsRemove]
+  );
+
+  // Define edgeTypes inside the component to access handleEdgeRemove
+  const edgeTypes = {
+    buttonedge: (edgeProps) => (
+      <ButtonEdge
+        {...edgeProps}
+        onEdgeClick={handleEdgeRemove} // Pass the handler directly
+      />
+    ),
+  };
 
   const getInitNodeData = (nodeID, type) => {
     let nodeData = { id: nodeID, nodeType: `${type}` };
@@ -72,7 +96,7 @@ export const PipelineUI = () => {
         );
         const type = appData?.nodeType;
 
-        // check if the dropped element is valid
+        // Check if the dropped element is valid
         if (typeof type === 'undefined' || !type) {
           return;
         }
@@ -93,7 +117,7 @@ export const PipelineUI = () => {
         addNode(newNode);
       }
     },
-    [reactFlowInstance]
+    [reactFlowInstance, addNode, getNodeID]
   );
 
   const onDragOver = useCallback((event) => {
@@ -103,7 +127,7 @@ export const PipelineUI = () => {
 
   return (
     <>
-      <div ref={reactFlowWrapper} style={{ width: '100wv', height: '70vh' }}>
+      <div ref={reactFlowWrapper} style={{ width: '100vw', height: '70vh' }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -114,6 +138,7 @@ export const PipelineUI = () => {
           onDragOver={onDragOver}
           onInit={setReactFlowInstance}
           nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes} // Pass edgeTypes here
           proOptions={proOptions}
           snapGrid={[gridSize, gridSize]}
           connectionLineType='smoothstep'
