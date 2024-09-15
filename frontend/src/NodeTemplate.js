@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Handle, useUpdateNodeInternals } from 'reactflow';
+import { RxCrossCircled } from "react-icons/rx";
 
 export const NodeTemplate = ({
   id,
@@ -86,6 +87,17 @@ export const NodeTemplate = ({
         </div>
         <div className='mx-4 my-3 rounded-lg nodrag'>
           {children}
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            top: '5px',
+            right: '5px',
+            cursor: 'pointer',
+          }}
+          // onClick={handleClose} // Add your close handler function here
+        >
+          <RxCrossCircled size={20} />
         </div>
       </div>
     </div>
