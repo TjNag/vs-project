@@ -6,7 +6,7 @@ export const NotesNode = ({ id, data }) => {
   const [notesContent, setNotesContent] = useState(data?.notesContent || '');
 
   return (
-    // <NodeTemplate id={id} name='Notes'>
+    <NodeTemplate id={id} name='Notes'>
 
     <div
       style={{
@@ -35,6 +35,6 @@ export const NotesNode = ({ id, data }) => {
       />
     </div>
 
-    // </NodeTemplate>
+    </NodeTemplate>
   );
 };

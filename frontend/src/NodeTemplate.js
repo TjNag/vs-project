@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Handle, useUpdateNodeInternals } from 'reactflow';
+import { Handle, useUpdateNodeInternals, useReactFlow } from 'reactflow';
 import { RxCrossCircled } from "react-icons/rx";
+import { useStore } from './store';
 
 export const NodeTemplate = ({
   id,
@@ -12,11 +13,15 @@ export const NodeTemplate = ({
 }) => {
   const updateNodeInternals = useUpdateNodeInternals();
 
+  const onElementsRemove = useStore(state => state.onElementsRemove);
+
   useEffect(() => {
     updateNodeInternals(id);
   }, [handles, id, updateNodeInternals]);
 
-  //Measuring text width
+  const handleClose = () => {
+    onElementsRemove([{ id, type: 'node' }]); // Remove the node by its ID
+  };
 
   return (
     <div
@@ -95,7 +100,7 @@ export const NodeTemplate = ({
             right: '5px',
             cursor: 'pointer',
           }}
-          // onClick={handleClose} // Add your close handler function here
+          onClick={handleClose}
         >
           <RxCrossCircled size={20} />
         </div>
