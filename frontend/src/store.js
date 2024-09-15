@@ -11,6 +11,7 @@ import {
 export const useStore = create((set, get) => ({
     nodes: [],
     edges: [],
+    nodeIDs: {},
     getNodeID: (type) => {
         const newIDs = {...get().nodeIDs};
         if (newIDs[type] === undefined) {
@@ -37,7 +38,20 @@ export const useStore = create((set, get) => ({
     },
     onConnect: (connection) => {
       set({
-        edges: addEdge({...connection, type: 'buttonedge', animated: true, markerEnd: {type: MarkerType.Arrow, height: '20px', width: '20px'}}, get().edges),
+        edges: addEdge(
+          {
+            ...connection,
+            type: 'buttonedge', // Use custom edge type
+            animated: true,
+            markerEnd: {
+              type: MarkerType.Arrow,
+              height: '20px',
+              width: '20px'
+            },
+            data: { isPendingRemoval: false }, // Initialize flag
+          },
+          get().edges
+        ),
       });
     },
     updateNodeField: (nodeId, fieldName, fieldValue) => {
@@ -56,5 +70,23 @@ export const useStore = create((set, get) => ({
         nodes: get().nodes.filter((node) => !elementsToRemove.some((el) => el.id === node.id)),
         edges: get().edges.filter((edge) => !elementsToRemove.some((el) => el.id === edge.id)),
       });
+    },
+    setEdgePendingRemoval: (id) => {
+      set(state => ({
+        edges: state.edges.map(edge => 
+          edge.id === id 
+            ? { ...edge, data: { ...edge.data, isPendingRemoval: true } } 
+            : edge
+        ),
+      }));
+    },
+    resetEdgePendingRemoval: (id) => {
+      set(state => ({
+        edges: state.edges.map(edge => 
+          edge.id === id 
+            ? { ...edge, data: { ...edge.data, isPendingRemoval: false } } 
+            : edge
+        ),
+      }));
     },
   }));

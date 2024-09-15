@@ -44,7 +44,9 @@ const selector = (state) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
-  onElementsRemove: state.onElementsRemove, // Ensure onElementsRemove is included
+  onElementsRemove: state.onElementsRemove,
+  setEdgePendingRemoval: state.setEdgePendingRemoval,
+  resetEdgePendingRemoval: state.resetEdgePendingRemoval,
 });
 
 export const PipelineUI = () => {
@@ -59,15 +61,28 @@ export const PipelineUI = () => {
     onEdgesChange,
     onConnect,
     onElementsRemove, // Destructure onElementsRemove
+    setEdgePendingRemoval,
+    resetEdgePendingRemoval,
   } = useStore(selector, shallow);
 
   // Handler to remove edges
   const handleEdgeRemove = useCallback(
     (event, id) => {
       event.stopPropagation(); // Prevent event bubbling
-      onElementsRemove([{ id, type: 'edge' }]); // Remove the edge with the specified id
+      const edge = edges.find(e => e.id === id);
+      if (edge.data?.isPendingRemoval) {
+        // If already pending removal, remove it
+        onElementsRemove([{ id, type: 'edge' }]);
+      } else {
+        // Set edge to pending removal
+        setEdgePendingRemoval(id);
+        // Reset the pending state after 5 seconds
+        setTimeout(() => {
+          resetEdgePendingRemoval(id);
+        }, 3000);
+      }
     },
-    [onElementsRemove]
+    [edges, onElementsRemove, setEdgePendingRemoval, resetEdgePendingRemoval]
   );
 
   // Define edgeTypes inside the component to access handleEdgeRemove
@@ -138,7 +153,7 @@ export const PipelineUI = () => {
           onDragOver={onDragOver}
           onInit={setReactFlowInstance}
           nodeTypes={nodeTypes}
-          edgeTypes={edgeTypes} // Pass edgeTypes here
+          edgeTypes={edgeTypes}
           proOptions={proOptions}
           snapGrid={[gridSize, gridSize]}
           connectionLineType='smoothstep'

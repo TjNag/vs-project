@@ -22,7 +22,7 @@ export default function CustomEdge({
   data,
   arrowHeadType,
   markerEndId,
-  onEdgeClick, // Ensure this prop is received
+  onEdgeClick,
 }) {
   const edgePath = getBezierPath({
     sourceX,
@@ -39,6 +39,13 @@ export default function CustomEdge({
     targetX,
     targetY,
   });
+
+  const isPendingRemoval = data?.isPendingRemoval || false;
+
+  // Apply red stroke if pending removal
+  const pathStyle = isPendingRemoval
+    ? { ...style, stroke: 'red', strokeWidth: 2 }
+    : style;
 
   return (
     <>
@@ -61,6 +68,16 @@ export default function CustomEdge({
           <button
             className="edgebutton"
             onClick={(event) => onEdgeClick(event, id)} // Use the passed onEdgeClick
+            style={{
+                // width: '100%',
+                // height: '100%',
+                borderRadius: '100%',
+                border: 'none',
+                background: isPendingRemoval ? 'red' : '#fff',
+                color: isPendingRemoval ? '#fff' : '#000',
+                cursor: 'pointer',
+              }}
+              title={isPendingRemoval ? "Click again to remove" : "Remove edge"}
           >
             ×
           </button>
