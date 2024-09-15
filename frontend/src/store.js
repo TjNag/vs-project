@@ -89,4 +89,14 @@ export const useStore = create((set, get) => ({
         ),
       }));
     },
+    selectedHandleType: null,
+    setSelectedHandleType: (data) => set({ selectedHandleType: data }),
+
+    connectingHandle: null,
+
+    // Method to set the connecting handle
+    setConnectingHandle: (data) => set({ connectingHandle: data }),
+
+    // Method to reset the connecting handle
+    resetConnectingHandle: () => set({ connectingHandle: null }),
   }));

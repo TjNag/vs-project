@@ -65,6 +65,11 @@ export const PipelineUI = () => {
     resetEdgePendingRemoval,
   } = useStore(selector, shallow);
 
+  const setSelectedHandleType = useStore((state) => state.setSelectedHandleType);
+
+  const setConnectingHandle = useStore((state) => state.setConnectingHandle);
+  const resetConnectingHandle = useStore((state) => state.resetConnectingHandle);
+
   // Handler to remove edges
   const handleEdgeRemove = useCallback(
     (event, id) => {
@@ -157,6 +162,19 @@ export const PipelineUI = () => {
           proOptions={proOptions}
           snapGrid={[gridSize, gridSize]}
           connectionLineType='simplebezier'
+          onPaneClick={() => setSelectedHandleType(null)}
+          // Add these handlers
+          onConnectStart={(event, params) => {
+            const { nodeId, handleId, handleType } = params;
+            setConnectingHandle({ nodeId, handleId, handleType });
+            setSelectedHandleType(null);
+          }}
+          onConnectEnd={() => {
+            resetConnectingHandle();
+          }}
+          onConnectStop={() => {
+            resetConnectingHandle();
+          }}
         >
           <Background color='#aaa' gap={gridSize} />
           <Controls />
