@@ -36,7 +36,7 @@ export const NodeTemplate = ({
   };
 
   return (
-    <div className="border border-black p-1 rounded-lg bg-light-violate hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)]">
+    <div className="border border-black p-1 rounded-lg bg-light-color hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)]">
       <div
         style={{
           border: "1px solid #7A7DF3",
@@ -139,7 +139,7 @@ export const NodeTemplate = ({
           }}
           className=" p-1 text-[14px] font-bold py-2 pl-2"
         >
-          <div className="flex gap-1 items-center text-text-dark-violate">
+          <div className="flex gap-1 items-center text-text-dark-color">
             {icon}
             {name}
           </div>

@@ -56,7 +56,7 @@ export const FormField = ({
           className='flex flex-col w-full'
         >
           <span
-            className='text-xs mb-1 font-bold text-medium-dark-violate'
+            className='text-xs mb-1 font-bold text-medium-dark-color'
           >
             {label}
           </span>
@@ -81,7 +81,7 @@ export const FormField = ({
               onInput={handleInput}
               onKeyDown={onKeyDown}
               rows={rows}
-              className="resize-none p-1 border border-medium-dark-violate rounded-lg outline-none bg-transparent overflow-y-auto max-h-48"
+              className="resize-none p-1 border border-medium-dark-color rounded-lg outline-none bg-transparent overflow-y-auto max-h-48"
             />
           ) : (
             <input

@@ -13,7 +13,7 @@ export const DraggableNode = ({ type, label, icon }) => {
 
   return (
     <div
-    className={`cursor-grab min-w-[80px] h-[60px] flex items-center rounded-[8px] text-[#7A7DF3] hover:text-text-dark-violate justify-center flex-col ${type} hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)] transition-transform duration-300`}
+    className={`cursor-grab min-w-[80px] h-[60px] flex items-center rounded-[8px] text-[#7A7DF3] hover:text-text-dark-color justify-center flex-col ${type} hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)] transition-transform duration-300`}
 
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = 'grab')}

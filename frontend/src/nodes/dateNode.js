@@ -32,7 +32,7 @@ export const DateNode = ({ id, data }) => {
         { type: 'source', position: Position.Right, id: `${id}-output` },
       ]}
     >
-      <div className='flex flex-col text-medium-dark-violate'>
+      <div className='flex flex-col text-medium-dark-color'>
         <FormField
           label='Start date:'
           type='date'
@@ -55,11 +55,11 @@ export const DateNode = ({ id, data }) => {
         ) : (
           <IoIosTime
             onClick={() => setShowStartTime(true)}
-            className='self-end mb-2 text-medium-dark-violate'
+            className='self-end mb-2 text-medium-dark-color'
           />
         )}
       </div>
-      <div className='flex flex-col text-medium-dark-violate'>
+      <div className='flex flex-col text-medium-dark-color'>
         <FormField
           label='End Date:'
           type='date'
@@ -82,7 +82,7 @@ export const DateNode = ({ id, data }) => {
         ) : (
           <IoIosTime
             onClick={() => setShowEndTime(true)}
-            className='self-end mb-[5px] text-medium-dark-violate'
+            className='self-end mb-[5px] text-medium-dark-color'
           />
         )}
       </div>

@@ -53,7 +53,7 @@ export const MultiSelectNode = ({ id, data }) => {
         {selectedOptions.map((selection) => (
           <div
             key={selection}
-            className="w-fit px-4 py-2 rounded-[40px] flex items-center justify-between bg-violet-100"
+            className="w-fit px-4 py-2 rounded-[40px] flex items-center justify-between bg-color-100"
           >
             <span className="text-sm font-medium text-center flex-1">
               {selection}
