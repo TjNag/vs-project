@@ -1,7 +1,6 @@
-// modalNotification.js
 import React from 'react';
 import { Modal, Box } from '@mui/material';
-import { IoIosClose } from 'react-icons/io';
+import { RxCrossCircled } from "react-icons/rx";
 
 export const ModalNotification = ({ close, data }) => {
   return (
@@ -17,37 +16,31 @@ export const ModalNotification = ({ close, data }) => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: 'background.paper',
-          boxShadow: 24,
-          p: 4,
-          borderRadius: '10px',
         }}
+        className='w-96 bg-white p-10 shadow-[0_8px_20px_rgba(122,125,243,0.75)] rounded-3xl'
       >
-        <div
-          className='text-7xl flex justify-center'
-        >
+        <div className='text-7xl flex justify-center'>
           🎉
         </div>
-        <h1 className='text-center'>Submission Successful!</h1>
-        <p className='text-center'>
+        <h1 className='text-center text-violet-600'>Submission Successful!</h1>
+        <p className='text-center text-violet-600'>
           Your graph has been submitted successfully
         </p>
 
-        <p className='text-center'>Number of Nodes: {data.num_nodes}</p>
-        <p className='text-center'>Number of Edges: {data.num_edges}</p>
+        <p className='text-center text-violet-600'>Number of Nodes: {data.num_nodes}</p>
+        <p className='text-center text-violet-600'>Number of Edges: {data.num_edges}</p>
         {data.is_dag ? (
-          <p className='font-bold text-center'>
+          <p className='font-bold text-center text-violet-700'>
             Your Graph is a Directed Acyclic Graph (DAG)
           </p>
         ) : (
-          <p className='font-bold text-center'>
+          <p className='font-bold text-center text-violet-700'>
             Your Graph is NOT a Directed Acyclic Graph (DAG)
           </p>
         )}
-        <div className='font-bold text-center'>
-          <IoIosClose
-            className='text-[2rem] cursor-pointer'
+        <div className='absolute top-2 right-2 font-bold text-center'>
+          <RxCrossCircled
+            className='text-4xl cursor-pointer text-violet-600 hover:text-light-red'
             onClick={close}
           />
         </div>
