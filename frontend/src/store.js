@@ -66,9 +66,24 @@ export const useStore = create((set, get) => ({
       });
     },
     onElementsRemove: (elementsToRemove) => {
+      const nodeIdsToRemove = elementsToRemove
+        .filter((el) => el.type === 'node')
+        .map((el) => el.id);
+      const edgeIdsToRemove = elementsToRemove
+        .filter((el) => el.type === 'edge')
+        .map((el) => el.id);
+    
       set({
-        nodes: get().nodes.filter((node) => !elementsToRemove.some((el) => el.id === node.id)),
-        edges: get().edges.filter((edge) => !elementsToRemove.some((el) => el.id === edge.id)),
+        nodes: get().nodes.filter(
+          (node) => !nodeIdsToRemove.includes(node.id)
+        ),
+        edges: get().edges.filter((edge) => {
+          const isEdgeToRemove = edgeIdsToRemove.includes(edge.id);
+          const isConnectedToRemovedNode =
+            nodeIdsToRemove.includes(edge.source) ||
+            nodeIdsToRemove.includes(edge.target);
+          return !isEdgeToRemove && !isConnectedToRemovedNode;
+        }),
       });
     },
     setEdgePendingRemoval: (id) => {

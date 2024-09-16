@@ -16,6 +16,7 @@ export const SubmitButton = () => {
 
   const handleClick = async () => {
     const data = { nodes: nodes, edges: edges };
+    console.log(JSON.stringify(data));
 
     try {
       const response = await fetch('http://127.0.0.1:8000/pipelines/parse', {
@@ -28,12 +29,12 @@ export const SubmitButton = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-
+      
       const responseData = await response.json();
       setCurrData(responseData);
       setSubmitted(true);
     } catch (error) {
-      console.error('Error psoting data:', error);
+      console.error('Error posting data:', error);
     }
   };
 
