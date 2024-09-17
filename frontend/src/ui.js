@@ -16,7 +16,7 @@ import { MultiSelectNode } from './nodes/multiSelectNode';
 import { DateNode } from './nodes/dateNode';
 import { NotesNode } from './nodes/notesNode';
 
-import ButtonEdge from './ButtonEdge'; // Import ButtonEdge
+import EdgeCrossButton from './utils/EdgeCrossButton'; // Import ButtonEdge
 
 import 'reactflow/dist/style.css';
 
@@ -93,7 +93,7 @@ export const PipelineUI = () => {
   // Define edgeTypes inside the component to access handleEdgeRemove
   const edgeTypes = {
     buttonedge: (edgeProps) => (
-      <ButtonEdge
+      <EdgeCrossButton
         {...edgeProps}
         onEdgeClick={handleEdgeRemove} // Pass the handler directly
       />
@@ -180,7 +180,7 @@ export const PipelineUI = () => {
             backgroundColor: '#ecfdf5',
           }}/>
           <Controls />
-          <MiniMap nodeColor={'#34d399'} maskColor={"rgb(167, 243, 208, 0.5)"} />
+          <MiniMap nodeColor={'#34d399'} maskColor={"rgb(167, 243, 208, 0.5)"} pannable zoomable />
         </ReactFlow>
       </div>
     </>

@@ -1,8 +1,8 @@
 // submit.js
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
-import { ModalNotification } from './modalNotification';
 import { useState } from 'react';
+import { ModalNotification } from './utils/modalNotification';
 
 const selector = (state) => ({
   nodes: state.nodes,

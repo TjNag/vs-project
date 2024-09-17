@@ -1,4 +1,4 @@
-// ButtonEdge.js
+// EdgeCrossButton.js
 import React from 'react';
 import {
   getBezierPath,
@@ -6,7 +6,7 @@ import {
   getMarkerEnd,
 } from 'react-flow-renderer';
 
-import './index.css';
+import '../index.css';
 
 const foreignObjectSize = 40;
 

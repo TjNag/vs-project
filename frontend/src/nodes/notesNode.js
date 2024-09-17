@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { NodeTemplate } from "../NodeTemplate";
-import { FormField } from "../FormField";
+import { NodeTemplate } from "./BaseNodeTemplate";
+import { FormField } from "../utils/FormField";
 import { FaNoteSticky } from "react-icons/fa6";
 
 export const NotesNode = ({ id, data }) => {

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Handle, useUpdateNodeInternals } from "reactflow";
 import { RxCrossCircled } from "react-icons/rx";
-import { useStore } from "./store";
+import { useStore } from "../store";
 
 export const NodeTemplate = ({
   id,

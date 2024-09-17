@@ -1,7 +1,7 @@
 // llmNode.js
 
 import { Position } from 'reactflow';
-import { NodeTemplate } from '../NodeTemplate';
+import { NodeTemplate } from './BaseNodeTemplate';
 import { LuBrainCircuit } from 'react-icons/lu';
 
 export const LLMNode = ({ id, data }) => {

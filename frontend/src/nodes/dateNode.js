@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { NodeTemplate } from '../NodeTemplate';
+import { NodeTemplate } from './BaseNodeTemplate';
 import { Position } from 'reactflow';
-import { FormField } from '../FormField';
+import { FormField } from '../utils/FormField';
 import { BsCalendar2RangeFill } from "react-icons/bs";
 import { IoIosTime, IoIosClose } from 'react-icons/io';
 

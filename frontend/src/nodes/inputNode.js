@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Position } from 'reactflow';
-import { NodeTemplate } from '../NodeTemplate';
-import { FormField } from '../FormField';
+import { NodeTemplate } from './BaseNodeTemplate';
+import { FormField } from '../utils/FormField';
 import { MdInput } from 'react-icons/md';
 
 export const InputNode = ({ id, data }) => {
