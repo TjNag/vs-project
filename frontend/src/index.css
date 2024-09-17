@@ -25,6 +25,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* For WebKit browsers */
@@ -47,18 +48,39 @@ textarea::-webkit-scrollbar-thumb {
   border: 3px solid transparent; /* creates padding around scroll thumb */
 }
 
-
 .btn-grad {
-  background-image: linear-gradient(to right, #7A7DF3 0%, #6563E4  51%, #7A7DF3  100%);
+  background-image: linear-gradient(60deg, #06beb6, #48b1bf, #2eb872, #06beb6);
   text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;            
-  box-shadow: 0 0 20px #eee;
+  background-size: 300% 300%;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem; /* Keeps the font size consistent */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.5s; /* Transition for scaling only */
+  animation: rotateGradient 8s linear infinite; /* Slower animation for better visibility */
 }
 
 .btn-grad:hover {
-  background-position: right center; 
   color: #fff;
   text-decoration: none;
+  transform: scale(1.05); /* Enlarge button on hover without affecting text size */
 }
+
+@keyframes rotateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NodeTemplate } from '../NodeTemplate';
 import { Position } from 'reactflow';
 import { FormField } from '../FormField';
-import { CiCalendarDate } from 'react-icons/ci';
+import { BsCalendar2RangeFill } from "react-icons/bs";
 import { IoIosTime, IoIosClose } from 'react-icons/io';
 
 export const DateNode = ({ id, data }) => {
@@ -26,7 +26,7 @@ export const DateNode = ({ id, data }) => {
     <NodeTemplate
       id={id}
       name='Pick Date'
-      icon={<CiCalendarDate />}
+      icon={<BsCalendar2RangeFill />}
       handles={[
         { type: 'target', position: Position.Left, id: `${id}-input` },
         { type: 'source', position: Position.Right, id: `${id}-output` },

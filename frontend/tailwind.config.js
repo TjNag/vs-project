@@ -5,10 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'light-color': '#CECFFC', // Light violate color for border
+        'light-color': '#6ee7b7', // Light violate color for border
         'light-red': '#FA8072', // Red color for cross
-        'text-dark-color': '#6563E4', // Dark violate color for headings
-        'medium-dark-color': '#7A7DF3', // Medium dark violate for cross initial color
+        'text-dark-color': '#059669', // Dark violate color for headings
+        'medium-dark-color': '#10b981', // Medium dark violate for cross initial color
       },
     },
   },

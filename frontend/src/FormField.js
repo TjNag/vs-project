@@ -1,5 +1,4 @@
-import React, { useRef, useEffect } from 'react';
-import { Position } from 'reactflow';
+import React, { useRef } from 'react';
 
 export const FormField = ({
   label,

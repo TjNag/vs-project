@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Position } from 'reactflow';
 import { NodeTemplate } from '../NodeTemplate';
 import { FormField } from '../FormField';
-import { CiTextAlignJustify } from 'react-icons/ci';
+import { MdOutlineTextFields } from "react-icons/md";
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
@@ -57,7 +57,7 @@ export const TextNode = ({ id, data }) => {
     <NodeTemplate
       id={id}
       name='Text'
-      icon={<CiTextAlignJustify />}
+      icon={<MdOutlineTextFields />}
       handles={handles}
     >
       <FormField

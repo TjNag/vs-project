@@ -42,11 +42,6 @@ export default function CustomEdge({
 
   const isPendingRemoval = data?.isPendingRemoval || false;
 
-  // Apply red stroke if pending removal
-  const pathStyle = isPendingRemoval
-    ? { ...style, stroke: 'red', strokeWidth: 2 }
-    : style;
-
   return (
     <>
       <path

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { NodeTemplate } from "../NodeTemplate";
 import { FormField } from "../FormField";
+import { FaNoteSticky } from "react-icons/fa6";
 
 export const NotesNode = ({ id, data }) => {
   const [notesContent, setNotesContent] = useState(data?.notesContent || "");
 
   return (
-    <NodeTemplate id={id} name="Notes">
+    <NodeTemplate id={id} name="Notes" icon={<FaNoteSticky />}>
       <div>
         <FormField
           label=""

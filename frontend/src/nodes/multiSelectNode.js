@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { NodeTemplate } from "../NodeTemplate";
 import { Position } from "reactflow";
 import { FormField } from "../FormField";
-import { BiSelectMultiple } from "react-icons/bi";
 import { IoIosClose } from "react-icons/io";
+import { RiCheckboxMultipleFill } from "react-icons/ri";
 
 export const MultiSelectNode = ({ id, data }) => {
   const [selectedOptions, setSelectedOptions] = useState(data?.selected || []);
@@ -43,7 +43,7 @@ export const MultiSelectNode = ({ id, data }) => {
     <NodeTemplate
       id={id}
       name="Multi-Select Dropdown"
-      icon={<BiSelectMultiple />}
+      icon={<RiCheckboxMultipleFill />}
       handles={[
         { type: "target", position: Position.Left, id: `${id}-input` },
         { type: "source", position: Position.Right, id: `${id}-output` },

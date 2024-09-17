@@ -13,12 +13,12 @@ export const DraggableNode = ({ type, label, icon }) => {
 
   return (
     <div
-    className={`cursor-grab min-w-[80px] h-[60px] flex items-center rounded-[8px] text-[#7A7DF3] hover:text-text-dark-color justify-center flex-col ${type} hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)] transition-transform duration-300`}
+    className={`bg-white cursor-grab min-w-[80px] h-[60px] px-4 flex items-center rounded-full text-medium-dark-color hover:text-text-dark-color justify-center flex-col ${type} hover:shadow-[0_4px_10px_rgba(52,211,153,0.5)] transition-transform duration-300`}
 
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = 'grab')}
       style={{
-        border: '1px solid #7A7DF3',
+        border: '1px solid #10b981',
       }}
       draggable
     >

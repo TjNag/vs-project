@@ -1,6 +1,6 @@
 // llmNode.js
 
-import { Handle, Position } from 'reactflow';
+import { Position } from 'reactflow';
 import { NodeTemplate } from '../NodeTemplate';
 import { LuBrainCircuit } from 'react-icons/lu';
 

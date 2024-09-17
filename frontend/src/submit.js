@@ -40,7 +40,7 @@ export const SubmitButton = () => {
 
   return (
     <div
-      className='flex justify-center items-center w-full h-16 bg-color-50'
+      className='bg-cyan-50 flex justify-center items-center w-full h-16'
     >
       {submitted && (
         <ModalNotification close={() => setSubmitted(false)} data={currData} />
@@ -48,7 +48,7 @@ export const SubmitButton = () => {
       <button
         type='submit'
         onClick={handleClick}
-        className='btn-grad cursor-pointer border-none px-8 py-3 rounded-md font-semibold '
+        className='btn-grad cursor-pointer border-none px-8 py-3 rounded-md font-semibold'
       >
         Submit
       </button>

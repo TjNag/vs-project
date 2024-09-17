@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 import { useState, useRef, useCallback } from 'react';
-import ReactFlow, { Controls, Background, MiniMap, addEdge } from 'reactflow';
+import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
 import { InputNode } from './nodes/inputNode';
@@ -176,9 +176,11 @@ export const PipelineUI = () => {
             resetConnectingHandle();
           }}
         >
-          <Background color='#aaa' gap={gridSize} />
+          <Background color='#059669' gap={gridSize} style={{
+            backgroundColor: '#ecfdf5',
+          }}/>
           <Controls />
-          <MiniMap />
+          <MiniMap nodeColor={'#34d399'} maskColor={"rgb(167, 243, 208, 0.5)"} />
         </ReactFlow>
       </div>
     </>

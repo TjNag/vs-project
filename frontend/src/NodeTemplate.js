@@ -36,10 +36,10 @@ export const NodeTemplate = ({
   };
 
   return (
-    <div className="border border-black p-1 rounded-lg bg-light-color hover:shadow-[0_4px_10px_rgba(122,125,243,0.5)]">
+    <div className="border border-black p-1 rounded-lg bg-light-color hover:shadow-[0_4px_10px_rgba(52,211,153,0.5)]">
       <div
         style={{
-          border: "1px solid #7A7DF3",
+          border: "1px solid #10b981",
           ...style,
         }}
         className="w-[250px] h-fit rounded-[8px] bg-white"
@@ -57,21 +57,21 @@ export const NodeTemplate = ({
                   ? "target"
                   : "source"))
           ) {
-            backgroundColor = "#0e4ecc";
+            backgroundColor = "DarkGreen";
           } else if (
             selectedHandleType &&
             (selectedHandleType.clickedHandleId === handle.id ||
               handle.type === selectedHandleType.selectedType)
           ) {
             // Highlight selected handles
-            backgroundColor = "red";
+            backgroundColor = "LawnGreen";
           } else if (hoveredHandleId === handle.id) {
             // Highlight hovered handle
-            backgroundColor = "violet";
+            backgroundColor = "LimeGreen";
           } else {
             // Default colors based on handle position
             backgroundColor =
-              handle.position === "left" ? "rgba(60, 21, 115, 1)" : "#ce94e8";
+              handle.position === "left" ? "Aquamarine" : "Turquoise";
           }
 
           return (
@@ -135,7 +135,7 @@ export const NodeTemplate = ({
         })}
         <div
           style={{
-            borderBottom: "0.5px #6563E4 solid",
+            borderBottom: "0.5px #059669 solid",
           }}
           className=" p-1 text-[14px] font-bold py-2 pl-2"
         >

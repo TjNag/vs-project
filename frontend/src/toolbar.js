@@ -1,48 +1,66 @@
 // toolbar.js
 import { DraggableNode } from './draggableNode';
-import { MdInput, MdOutlineOutput, MdOutlineFileUpload } from 'react-icons/md';
+import { MdOutlineInput, MdOutlineOutput } from 'react-icons/md';
 import { LuBrainCircuit } from 'react-icons/lu';
-import { CiTextAlignJustify, CiCalendarDate } from 'react-icons/ci';
-import { IoIosCheckboxOutline } from 'react-icons/io';
-import { BiSelectMultiple } from 'react-icons/bi';
-import { FaRegNoteSticky } from 'react-icons/fa6';
+import { BsCalendar2RangeFill } from "react-icons/bs";
+import { FaNoteSticky } from 'react-icons/fa6';
+import { MdOutlineTextFields } from "react-icons/md";
+import { RiCheckboxMultipleFill } from "react-icons/ri";
+import { FaFileUpload } from "react-icons/fa";
+import { IoMdCheckbox } from "react-icons/io";
 
 export const PipelineToolbar = () => {
   return (
-    <div className='p-2'>
+    <div className='p-2 bg-cyan-50'>
       <div
-        className='flex flex-wrap gap-3 my-1'
+        className='flex flex-wrap gap-3 my-1 justify-center'
       >
-        <DraggableNode type='customInput' label='Input' icon={<MdInput />} />
-        <DraggableNode type='llm' label='LLM' icon={<LuBrainCircuit />} />
+        <DraggableNode
+          type='customInput'
+          label='Input'
+          icon={<MdOutlineInput />}
+        />
+        <DraggableNode
+          type='llm'
+          label='LLM'
+          icon={<LuBrainCircuit />}
+        />
         <DraggableNode
           type='customOutput'
           label='Output'
           icon={<MdOutlineOutput />}
         />
-        <DraggableNode type='text' label='Text' icon={<CiTextAlignJustify />} />
+        <DraggableNode
+          type='text'
+          label='Text'
+          icon={<MdOutlineTextFields />}
+        />
         <DraggableNode
           type='checkbox'
           label='Checkbox'
-          icon={<IoIosCheckboxOutline />}
+          icon={<IoMdCheckbox />}
         />
         <DraggableNode
           type='fileUpload'
           label='File Upload'
-          icon={<MdOutlineFileUpload />}
+          icon={<FaFileUpload />}
         />
 
         <DraggableNode
           type='multiSelect'
-          label='MultiSelect'
-          icon={<BiSelectMultiple />}
+          label='Multi-Select'
+          icon={<RiCheckboxMultipleFill />}
         />
         <DraggableNode
           type='customDate'
-          label='Date'
-          icon={<CiCalendarDate />}
+          label='Date Range'
+          icon={<BsCalendar2RangeFill />}
         />
-        <DraggableNode type='notes' label='Notes' icon={<FaRegNoteSticky />} />
+        <DraggableNode
+          type='notes'
+          label='Notes'
+          icon={<FaNoteSticky />}
+        />
       </div>
     </div>
   );
